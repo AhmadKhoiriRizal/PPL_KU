@@ -1,0 +1,52 @@
+/* container */
+
+#logo h1 img {
+  max-width: 100%;
+  height: 40px;
+}
+#logo h1 {
+  font-size:larger;
+  font-weight: bold;
+  font-style: italic;
+}
+#logo h1 a {
+  color: #ffffff;
+  text-decoration-style: double;
+}
+#logo h1 a span {
+  color: #95103B;
+}
+.logo_tentang_saka {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border: none;
+    line-height: normal;
+    vertical-align: middle;
+}
+
+.responsive-map-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* Rasio 16:9 (450 / 800 = 0.5625) */
+  height: 100%;
+  overflow: hidden;
+  border-radius: 8px; /* opsional */
+}
+
+.responsive-map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+
+
+
+
+
