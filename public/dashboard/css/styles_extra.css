@@ -27,10 +27,35 @@
     vertical-align: middle;
 }
 
+.logo_sejarah_saka {
+    float: right;
+    margin: 0 0 10px 20px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Tambahan styling opsional untuk layar kecil */
+@media screen and (max-width: 750px) {
+    .logo_sejarah_saka {
+        display: block;
+        float: none;
+        margin: 0 auto 10px auto;
+        max-width: 80%; /* atau 100% sesuai kebutuhan */
+    }
+}
+
+.logo_sejarah_saka {
+    float: right;
+    margin: 0 0 10px 50px;
+    width: 250px;
+    height: auto;
+}
+
+/* responsif maps */
 .responsive-map-container {
   position: relative;
   width: 100%;
-  padding-top: 56.25%; /* Rasio 16:9 (450 / 800 = 0.5625) */
+  /* padding-top: 56.25%; Rasio 16:9 (450 / 800 = 0.5625) */
   height: 100%;
   overflow: hidden;
   border-radius: 8px; /* opsional */
@@ -46,6 +71,37 @@
 }
 
 
+/* login register */
+#body-logres {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+}
+
+.auth-container {
+    box-shadow: 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.07);
+    transition: all 0.3s ease;
+}
+
+.auth-container:hover {
+    box-shadow: 0 18px 40px rgba(50,50,93,.15), 0 8px 20px rgba(0,0,0,.1);
+}
+
+.tab-btn {
+    transition: all 0.3s ease;
+}
+
+.tab-btn:hover:not(.active) {
+    background-color: rgba(99, 102, 241, 0.1);
+}
+
+.form-input {
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+}
 
 
 
