@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
 
 class ManajementAkunController extends Controller
 {
@@ -65,5 +67,48 @@ class ManajementAkunController extends Controller
         $user->delete();
 
         return redirect()->back()->with('success', 'Akun berhasil dihapus.');
+    }
+
+// Profil Admin
+    public function updateProfile(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|max:100|unique:users,email,' . Auth::id(),
+            'role' => ['required', Rule::in(['admin', 'user'])],
+            'status' => ['required', Rule::in(['aktif', 'nonaktif'])],
+        ]);
+
+        $user = Auth::user();
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'role' => $request->role,
+            'status' => $request->status,
+        ]);
+
+        return back()->with('success', 'Profil berhasil diperbarui.');
+    }
+
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => ['required', 'confirmed', 'min:8']
+        ]);
+
+        $user = Auth::user();
+
+        if (!Hash::check($request->current_password, $user->password)) {
+            return back()->withErrors(['current_password' => 'Password saat ini tidak sesuai.']);
+        }
+
+        $user->password = Hash::make($request->new_password);
+        // $user->two_factor_enabled = $request->has('two_factor');
+        $user->save();
+
+        return back()->with('success', 'Password berhasil diperbarui.');
     }
 }

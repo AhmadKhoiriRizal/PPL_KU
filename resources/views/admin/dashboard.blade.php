@@ -10,177 +10,68 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 grid-margin stretch-card">
+                <div class="col-md-6 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <div
-                                class="d-flex align-items-center justify-content-between justify-content-md-center justify-content-xl-between flex-wrap mb-4">
+                            <div class="d-flex align-items-center justify-content-between flex-wrap mb-4">
                                 <div>
-                                    <p class="mb-2 text-md-center text-lg-left">Total Expenses</p>
-                                    <h1 class="mb-0">8742</h1>
+                                    <p class="mb-2 text-md-center text-lg-left">Jumlah Pengguna</p>
+                                    <h1 class="mb-0">{{ $jumlahUsers }}</h1>
                                 </div>
-                                <i class="typcn typcn-briefcase icon-xl text-secondary"></i>
+                                <i class="bi bi-person-circle icon-xl text-secondary" style="font-size: 2.5rem;"></i>
                             </div>
-                            <canvas id="expense-chart" height="80"></canvas>
+                            <canvas id="users-chart" height="80"></canvas>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 grid-margin stretch-card">
+
+                <div class="col-md-6 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <div
-                                class="d-flex align-items-center justify-content-between justify-content-md-center justify-content-xl-between flex-wrap mb-4">
+                            <div class="d-flex align-items-center justify-content-between flex-wrap mb-4">
                                 <div>
-                                    <p class="mb-2 text-md-center text-lg-left">Total Budget</p>
-                                    <h1 class="mb-0">47,840</h1>
+                                    <p class="mb-2 text-md-center text-lg-left">Jumlah Anggota</p>
+                                    <h1 class="mb-0">{{ $jumlahAnggota }}</h1>
                                 </div>
-                                <i class="typcn typcn-chart-pie icon-xl text-secondary"></i>
+                                <i class="bi bi-people-fill icon-xl text-secondary" style="font-size: 2.5rem;"></i>
                             </div>
-                            <canvas id="budget-chart" height="80"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 grid-margin stretch-card">
-                    <div class="card">
-                        <div class="card-body">
-                            <div
-                                class="d-flex align-items-center justify-content-between justify-content-md-center justify-content-xl-between flex-wrap mb-4">
-                                <div>
-                                    <p class="mb-2 text-md-center text-lg-left">Total Balance</p>
-                                    <h1 class="mb-0">$7,243</h1>
-                                </div>
-                                <i class="typcn typcn-clipboard icon-xl text-secondary"></i>
-                            </div>
-                            <canvas id="balance-chart" height="80"></canvas>
+                            <canvas id="anggota-chart" height="80"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6 grid-margin stretch-card">
                     <div class="card">
-                        <div class="table-responsive pt-3">
-                            <table class="table table-striped project-orders-table">
-                                <thead>
-                                    <tr>
-                                        <th class="ml-5">ID</th>
-                                        <th>Project name</th>
-                                        <th>Customer</th>
-                                        <th>Deadline</th>
-                                        <th>Payouts </th>
-                                        <th>Traffic</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>#D1</td>
-                                        <td>Consectetur adipisicing elit </td>
-                                        <td>Beulah Cummings</td>
-                                        <td>03 Jan 2019</td>
-                                        <td>$ 5235</td>
-                                        <td>1.3K</td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
-                                                    Edit
-                                                    <i class="typcn typcn-edit btn-icon-append"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-sm btn-icon-text">
-                                                    Delete
-                                                    <i class="typcn typcn-delete-outline btn-icon-append"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>#D2</td>
-                                        <td>Correlation natural resources silo</td>
-                                        <td>Mitchel Dunford</td>
-                                        <td>09 Oct 2019</td>
-                                        <td>$ 3233</td>
-                                        <td>5.4K</td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
-                                                    Edit
-                                                    <i class="typcn typcn-edit btn-icon-append"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-sm btn-icon-text">
-                                                    Delete
-                                                    <i class="typcn typcn-delete-outline btn-icon-append"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>#D3</td>
-                                        <td>social capital compassion social</td>
-                                        <td>Pei Canaday</td>
-                                        <td>18 Jun 2019</td>
-                                        <td>$ 4311</td>
-                                        <td>2.1K</td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
-                                                    Edit
-                                                    <i class="typcn typcn-edit btn-icon-append"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-sm btn-icon-text">
-                                                    Delete
-                                                    <i class="typcn typcn-delete-outline btn-icon-append"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>#D4</td>
-                                        <td>empower communities thought</td>
-                                        <td>Gaynell Sharpton</td>
-                                        <td>23 Mar 2019</td>
-                                        <td>$ 7743</td>
-                                        <td>2.7K</td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
-                                                    Edit
-                                                    <i class="typcn typcn-edit btn-icon-append"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-sm btn-icon-text">
-                                                    Delete
-                                                    <i class="typcn typcn-delete-outline btn-icon-append"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>#D5</td>
-                                        <td> Targeted effective; mobilize </td>
-                                        <td>Audrie Midyett</td>
-                                        <td>22 Aug 2019</td>
-                                        <td>$ 2455</td>
-                                        <td>1.2K</td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
-                                                    Edit
-                                                    <i class="typcn typcn-edit btn-icon-append"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-sm btn-icon-text">
-                                                    Delete
-                                                    <i class="typcn typcn-delete-outline btn-icon-append"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between flex-wrap mb-4">
+                                <div>
+                                    <p class="mb-2 text-md-center text-lg-left">Jumlah Pendaftar</p>
+                                    <h1 class="mb-0">{{ $jumlahAnggota }}</h1>
+                                </div>
+                                <i class="bi bi-person-plus-fill icon-xl text-secondary" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <canvas id="anggota-chart" height="80"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between flex-wrap mb-4">
+                                <div>
+                                    <p class="mb-2 text-md-center text-lg-left">Jumlah Kegiatan</p>
+                                    <h1 class="mb-0">{{ $jumlahKegiatan }}</h1>
+                                </div>
+                                <i class="bi bi-calendar-event-fill icon-xl text-secondary" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <canvas id="kegiatan-chart" height="80"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
         <!-- content-wrapper ends -->
 @endsection

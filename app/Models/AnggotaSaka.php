@@ -16,6 +16,10 @@ class AnggotaSaka extends Model
         'alamat',
         'no_hp',
         'email',
+        'jabatan',          // ✅ ditambahkan
+        'status',           // ✅ ditambahkan
+        'masa_jabatan_mulai',     // ✅ ditambahkan
+        'masa_jabatan_selesai',     // ✅ ditambahkan
         'sekolah',
         'nama_ortu',
         'pekerjaan_ortu',

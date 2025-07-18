@@ -11,7 +11,7 @@ class CheckRole
         if (Auth::check() && Auth::user()->role == $role) {
             return $next($request);
         }
-        return redirect('/'); // Atau halaman lain jika tidak memiliki akses
+        return redirect('/beranda'); // Atau halaman lain jika tidak memiliki akses
     }
 }
 

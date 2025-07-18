@@ -110,67 +110,112 @@
 /* Table Footer */
 /* Informasi jumlah data */
 .dt-info {
-  font-size: 14px;
-  margin-bottom: 1em;
-  color: #333;
-  font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 1em;
+    color: #333;
+    font-weight: 500;
 }
 
 /* Wrapper pagination */
 .dt-paging nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
 }
 
 /* Tombol pagination umum */
 .dt-paging-button {
-  background-color: #f4f4f4;
-  border: 1px solid #ccc;
-  color: #333;
-  padding: 6px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 14px;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    color: #333;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
 }
 
 /* Hover effect */
 .dt-paging-button:hover:not(.disabled):not(.current) {
-  background-color: #e0e0e0;
-  color: #000;
+    background-color: #e0e0e0;
+    color: #000;
 }
 
 /* Tombol aktif (halaman saat ini) */
 .dt-paging-button.current {
-  background-color: #007bff;
-  border-color: #007bff;
-  color: #fff;
-  font-weight: bold;
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    font-weight: bold;
 }
 
 /* Tombol nonaktif (first/prev/next/last yang tidak bisa diklik) */
 .dt-paging-button.disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 /* Fokus keyboard */
 .dt-paging-button:focus {
-  outline: 2px solid #007bff;
+    outline: 2px solid #007bff;
 }
 
 /* Responsive tweaks */
 @media (max-width: 480px) {
-  .dt-paging nav {
-    flex-direction: column;
-    gap: 8px;
-  }
+    .dt-paging nav {
+        flex-direction: column;
+        gap: 8px;
+    }
 
-  .dt-info {
-    text-align: center;
-  }
+    .dt-info {
+        text-align: center;
+    }
 }
 
+
+
+/* Profile Admin */
+.profile-card {
+    background-color: white;
+}
+
+.profile-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #224abe 100%);
+    color: white;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 2rem;
+}
+
+.profile-picture-container {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: white;
+    border: 5px solid white;
+    overflow: hidden;
+    margin: 5px auto 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.profile-picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(78, 115, 223, 0.25);
+}
+
+.nav-pills .nav-link.active {
+    background-color: var(--primary-color);
+}
+
+.form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(78, 115, 223, 0.25);
+}

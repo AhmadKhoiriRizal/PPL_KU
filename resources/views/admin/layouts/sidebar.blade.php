@@ -28,39 +28,45 @@
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('admindashboard')}}">
+                <a class="nav-link" href="{{ route('admin.dashboard')}}">
                     <i class="typcn typcn-device-desktop menu-icon"></i>
                     <span class="menu-title">Dashboard</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('admin.datapendaftar')}}">
                     <i class="bi bi-person-badge"></i>
                     <span class="menu-title">Pendaftaran</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('admin.kegiatan')}}">
                     <i class="bi bi-calendar-check"></i>
                     <span class="menu-title">Kegiatan</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('admin.anggota')}}">
                     <i class="bi bi-people-fill"></i>
                     <span class="menu-title">Anggota</span>
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="bi bi-card-text"></i>
                     <span class="menu-title">Cetak Kartu</span>
                 </a>
-            </li>
+            </li> --}}
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('adminmanajemen-akun')}}">
+                <a class="nav-link" href="{{ route('admin.manajemen-akun')}}">
                     <i class="bi bi-shield-lock"></i>
                     <span class="menu-title">Manajement Akun</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.profil')}}">
+                    <i class="bi bi-person-square"></i>
+                    <span class="menu-title">Profil</span>
                 </a>
             </li>
             <li class="nav-item">

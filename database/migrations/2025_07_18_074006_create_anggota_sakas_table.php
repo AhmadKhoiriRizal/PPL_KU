@@ -29,6 +29,12 @@ return new class extends Migration {
             $table->enum('golongan_darah', ['A', 'B', 'AB', 'O']);
             $table->string('foto');
             $table->string('file_pernyataan');
+
+            // Kolom tambahan
+            $table->string('jabatan')->nullable(); // Misal: Ketua, Sekretaris, dll.
+            $table->enum('status', ['aktif', 'nonaktif'])->default('aktif'); // Status keanggotaan
+            $table->date('masa_jabatan_mulai')->nullable();
+            $table->date('masa_jabatan_selesai')->nullable();
             $table->timestamps();
         });
     }

@@ -76,7 +76,7 @@
                                         2.48697 8.47087 3.33782 7"
                                     stroke="#fff" stroke-width="1.5" stroke-linecap="round"></path>
                             </svg>
-                            <span class="fw-semibold">Masuk</span>
+                            <span class="fw-semibold">Daftar</span>
                         </a>
                     @endif
                 </div>

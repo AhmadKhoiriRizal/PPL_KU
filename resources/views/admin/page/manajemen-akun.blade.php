@@ -9,7 +9,7 @@
                     <h4 class="card-title ">Manajement Data Akun</h4>
                 </div>
                 <div class="">
-                    <a href="#" class=" text-center btn btn-primary btn-icon mt-lg-0 mt-md-0 mt-3" data-bs-toggle="modal"
+                    <a href="#" class=" text-center btn btn-outline-primary btn-icon mt-lg-0 mt-md-0 mt-3" data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop-1">
                         <i class="btn-inner">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -24,7 +24,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel">Create New Admin</h5>
+                                    <h5 class="modal-title" id="staticBackdropLabel">Buat Admin Baru</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>

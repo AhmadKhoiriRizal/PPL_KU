@@ -52,34 +52,154 @@
 <script src="https://cdn.datatables.net/buttons/3.2.4/js/buttons.print.min.js"></script>
 <script>
 $(document).ready(function () {
+    $.fn.dataTable.ext.search.push(function (settings, data) {
+        let selectedYear = $('#filter-tahun').val();
+        let tanggal = data[4]; // Ganti dengan index kolom tanggal lahir
+
+        if (!selectedYear) return true; // Tidak ada filter
+
+        let masa_jabatan_mulai = new Date(tanggal).getFullYear();
+
+        return masa_jabatan_mulai == selectedYear;
+    });
     $('[data-toggle="data-table"]').each(function () {
-        $(this).DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                {
-                    extend: 'excelHtml5',
-                    autoFilter: true,
-                    sheetName: 'Exported data',
-                    exportOptions: {
-                        columns: [0, 1, 2, 3, 5] // tanpa password (4) dan aksi (6)
+        const $table = $(this);
+        const id = $table.attr('id');
+
+        let config = {};
+
+        if (id === 'manajemen-akun') {
+            config = {
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'excelHtml5',
+                        autoFilter: true,
+                        sheetName: 'Manajemen Akun',
+                        exportOptions: { columns: [0, 1, 2, 3, 5] }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        sheetName: 'Manajemen Akun',
+                        exportOptions: { columns: [0, 1, 2, 3, 5] }
+                    },
+                    {
+                        extend: 'print',
+                        sheetName: 'Manajemen Akun',
+                        exportOptions: { columns: [0, 1, 2, 3, 5] }
                     }
-                },
-                {
-                    extend: 'pdfHtml5',
-                    exportOptions: {
-                        columns: [0, 1, 2, 3, 5]
+                ],
+                columnDefs: [
+                    {
+                        targets: [4, 6], // kolom password dan aksi, misalnya
+                        searchable: false
                     }
-                },
-                {
-                    extend: 'print',
-                    exportOptions: {
-                        columns: [0, 1, 2, 3, 5]
+                ]
+            };
+        } else if (id === 'data-anggota') {
+            config = {
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'excelHtml5',
+                        autoFilter: true,
+                        sheetName: 'Data Anggota Saka Bhayangkara Polsek Mayong',
+                        exportOptions: {
+                            columns: Array.from({ length: 6 }, (_, i) => i).filter(i => i !== 1) // kolom 0-6 kecuali 1
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        sheetName: 'Data Anggota Saka Bhayangkara Polsek Mayong',
+                        exportOptions: {
+                            columns: Array.from({ length: 6 }, (_, i) => i).filter(i => i !== 1) // kolom 0-6 kecuali 1
+                        }
+                    },
+                    {
+                        extend: 'print',
+                        sheetName: 'Data Anggota Saka Bhayangkara Polsek Mayong',
+                        exportOptions: {
+                            columns: Array.from({ length: 6 }, (_, i) => i).filter(i => i !== 1) // kolom 0-6 kecuali 1
+                        }
                     }
-                }
-            ]
-        });
+                ],
+            };
+        } else if (id === 'data-kegiatan') {
+            config = {
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'excelHtml5',
+                        autoFilter: true,
+                        sheetName: 'Data Kegiatan Saka Bhayangkara Polsek Mayong',
+                        exportOptions: {
+                            columns: Array.from({ length: 7 }, (_, i) => i).filter(i => i !== 1) // kolom 0-6 kecuali 1
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        sheetName: 'Data Anggota Saka Bhayangkara Polsek Mayong',
+                        exportOptions: {
+                            columns: Array.from({ length: 7 }, (_, i) => i).filter(i => i !== 1) // kolom 0-6 kecuali 1
+                        }
+                    },
+                    {
+                        extend: 'print',
+                        sheetName: 'Data Anggota Saka Bhayangkara Polsek Mayong',
+                        exportOptions: {
+                            columns: Array.from({ length: 7 }, (_, i) => i).filter(i => i !== 1) // kolom 0-6 kecuali 1
+                        }
+                    }
+                ],
+                columnDefs: [
+                    {
+                        targets: [1], // Foto dan Aksi
+                        searchable: false
+                    }
+                ]
+            };
+        } else if (id === 'datapendaftar') {
+            config = {
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'excelHtml5',
+                        autoFilter: true,
+                        sheetName: 'Data Pendaftaran Saka Bhayangkara Polsek Mayong',
+                        exportOptions: {
+                            columns: Array.from({ length: 14 }, (_, i) => i) // kolom 0-14
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        sheetName: 'Data Pendaftaran Saka Bhayangkara Polsek Mayong',
+                        exportOptions: {
+                            columns: Array.from({ length: 14 }, (_, i) => i)
+                        }
+                    },
+                    {
+                        extend: 'print',
+                        sheetName: 'Data Pendaftaran Saka Bhayangkara Polsek Mayong',
+                        exportOptions: { columns: [0, 1, 2, 3, 4, 5, 6] }
+                    }
+                ],
+                columnDefs: [
+                    {
+                        targets: [15, 16], // Foto dan Aksi
+                        searchable: false
+                    }
+                ]
+            };
+        }
+
+        $table.DataTable(config);
+    });
+    // Trigger saat dropdown berubah
+    $('#filter-tahun').on('change', function () {
+        $('#data-anggota').DataTable().draw();
     });
 });
+
 </script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
