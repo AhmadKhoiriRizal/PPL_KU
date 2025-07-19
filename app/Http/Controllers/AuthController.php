@@ -56,7 +56,7 @@ class AuthController extends Controller
                 case 'admin':
                     return redirect()->intended('/admin/dashboard');
                 case 'user':
-                    return redirect()->intended('/pendaftaran-saka');
+                    return redirect()->intended('/beranda');
                 default:
                     Auth::logout(); // Logout jika rolenya tidak dikenali
                     return redirect()->route('login')->withErrors([

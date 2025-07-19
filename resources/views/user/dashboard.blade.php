@@ -6,7 +6,7 @@
         <div class="container">
             <div class="masthead-subheading">"Sabhara Polsek Mayong"</div>
             <div class="masthead-heading text-uppercase">Satuan Karya Pramuka Bhayangkara</div>
-            <a class="btn btn-primary btn-xl text-uppercase" href="#services">Jelajah</a>
+            <a class="btn btn-primary btn-xl text-uppercase" href="#beranda">Jelajah</a>
         </div>
     </header>
     <!-- Services-->
@@ -108,10 +108,11 @@
                                 orang tua/wali dan pembina gugus depan.<br>
                                 Silakan melakukan pendaftaran melalui tombol di bawah ini:
                             </p>
-                            <a href="{{ route('login') }}"
-                                class="btn btn-primary mt-2">
-                                Daftar Anggota
-                            </a>
+                            @auth
+                                <a href="#" onclick="event.preventDefault(); showLoginAlert();" class="btn btn-primary mt-2">Daftar Anggota</a>
+                            @else
+                                <a href="{{ route('login') }}" class="btn btn-primary mt-2">Daftar Anggota</a>
+                            @endauth
                         </div>
                     </div>
                 </li>

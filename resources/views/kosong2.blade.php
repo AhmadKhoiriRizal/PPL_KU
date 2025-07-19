@@ -3,199 +3,390 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Profil | YourApp</title>
+    <title>Organizational Structure</title>
     <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
-        :root {
-            --primary-color: #4e73df;
-            --secondary-color: #f8f9fc;
-        }
-
         body {
             background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        .profile-card {
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        .org-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
 
-        .profile-header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #224abe 100%);
+        .org-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .org-header h2 {
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .org-header p {
+            color: #7f8c8d;
+        }
+
+        .org-level {
+            margin: 20px 0;
+        }
+
+        .org-level-title {
+            background-color: #3498db;
             color: white;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-            padding: 2rem;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
         }
 
-        .profile-picture-container {
-            width: 150px;
-            height: 150px;
+        .org-item {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .org-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #3498db;
+        }
+
+        .org-item-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .org-avatar {
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
-            background-color: white;
-            border: 5px solid white;
             overflow: hidden;
-            margin: -75px auto 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-right: 15px;
         }
 
-        .profile-picture {
+        .org-avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .form-control:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.25rem rgba(78, 115, 223, 0.25);
+        .org-info h5 {
+            margin: 0;
+            color: #2c3e50;
+            font-weight: 600;
         }
 
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
+        .org-info p {
+            margin: 5px 0 0;
+            color: #7f8c8d;
+            font-size: 0.9rem;
         }
 
-        .btn-outline-primary {
-            color: var(--primary-color);
-            border-color: var(--primary-color);
+        .org-details {
+            margin-top: 10px;
         }
 
-        .btn-outline-primary:hover {
-            background-color: var(--primary-color);
-            color: white;
+        .org-details p {
+            margin: 5px 0;
+            font-size: 0.9rem;
         }
 
-        .nav-pills .nav-link.active {
-            background-color: var(--primary-color);
+        .org-details i {
+            color: #3498db;
+            margin-right: 5px;
+            width: 20px;
+            text-align: center;
         }
 
-        .form-select:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.25rem rgba(78, 115, 223, 0.25);
+        .connecting-line {
+            position: absolute;
+            width: 2px;
+            background-color: #3498db;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+
+        .level-connector {
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .org-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .connecting-line {
+                display: none;
+            }
+
+            .org-item {
+                margin-bottom: 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="profile-card mb-4">
-                    <div class="profile-header text-center">
-                        <h2>Edit Profil</h2>
-                        <p class="mb-0">Kelola informasi pribadi Anda</p>
-                    </div>
+    <div class="container org-container">
+        <div class="org-header">
+            <h2>Our Organization Structure</h2>
+            <p>Meet the team that makes everything possible</p>
+        </div>
 
-                    <div class="card-body p-4">
-                        <div class="row justify-content-center">
-                            <div class="col-md-4 text-center mb-4">
-                                <div class="profile-picture-container">
-                                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/41c8a742-3704-4aaa-bc21-01220e5f2f44.png" alt="Foto profil pengguna" class="profile-picture" id="profilePicture">
-                                </div>
-                                <button class="btn btn-sm btn-outline-primary mt-2" id="changePhotoBtn">
-                                    <i class="fas fa-camera me-1"></i> Ubah Foto
-                                </button>
-                                <input type="file" id="photoUpload" class="d-none" accept="image/*">
+        <!-- Level 1: CEO -->
+        <div class="org-level">
+            <div class="org-level-title">
+                Board of Directors
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="org-item text-center">
+                        <div class="org-item-header justify-content-center">
+                            <div class="org-avatar">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/905c046a-f0cf-4c21-9fe7-c265f60708a1.png" alt="Portrait of a senior executive in formal attire with gray hair, standing confidently with arms crossed in a modern office setting" />
+                            </div>
+                            <div class="org-info">
+                                <h5>Johnathan Smith</h5>
+                                <p>Chief Executive Officer</p>
                             </div>
                         </div>
-
-                        <ul class="nav nav-pills mb-4 justify-content-center" id="pills-tab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="pills-info-tab" data-bs-toggle="pill" data-bs-target="#pills-info" type="button" role="tab">
-                                    <i class="fas fa-user-circle me-1"></i> Informasi Dasar
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-security-tab" data-bs-toggle="pill" data-bs-target="#pills-security" type="button" role="tab">
-                                    <i class="fas fa-lock me-1"></i> Keamanan
-                                </button>
-                            </li>
-                        </ul>
-
-                        <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade show active" id="pills-info" role="tabpanel">
-                                <form>
-                                    <div class="row mb-3">
-                                        <label for="firstName" class="form-label">Nama Depan</label>
-                                        <input type="text" class="form-control" id="firstName" value="John">
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="email" value="john.doe@example.com">
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="status" class="form-label">Status Akun</label>
-                                        <select class="form-select" id="status">
-                                            <option value="active" selected>Aktif</option>
-                                            <option value="inactive">Nonaktif</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="status" class="form-label">Status Akun</label>
-                                        <select class="form-select" id="status">
-                                            <option value="active" selected>Aktif</option>
-                                            <option value="inactive">Nonaktif</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                        <button type="button" class="btn btn-outline-primary me-md-2">Batal</button>
-                                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="tab-pane fade" id="pills-security" role="tabpanel">
-                                <form>
-                                    <div class="mb-3">
-                                        <label for="currentPassword" class="form-label">Password Saat Ini</label>
-                                        <input type="password" class="form-control" id="currentPassword">
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <div class="col-md-6">
-                                            <label for="newPassword" class="form-label">Password Baru</label>
-                                            <input type="password" class="form-control" id="newPassword">
-                                            <div class="form-text">
-                                                <i class="fas fa-info-circle me-1"></i>
-                                                Minimal 8 karakter dengan kombinasi huruf dan angka
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="confirmPassword" class="form-label">Konfirmasi Password Baru</label>
-                                            <input type="password" class="form-control" id="confirmPassword">
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-4">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="twoFactor">
-                                            <label class="form-check-label" for="twoFactor">
-                                                Aktifkan Verifikasi Dua Langkah
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                        <button type="button" class="btn btn-outline-primary me-md-2">Batal</button>
-                                        <button type="submit" class="btn btn-primary">Perbaharui Password</button>
-                                    </div>
-                                </form>
-                            </div>
+                        <div class="org-details">
+                            <p><i class="bi bi-envelope"></i> j.smith@company.com</p>
+                            <p><i class="bi bi-telephone"></i> +1 (555) 123-4567</p>
+                            <p><i class="bi bi-building"></i> Corporate Headquarters</p>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <div class="alert alert-info">
-                    <div class="d-flex align-items-center">
-                        <i class="fas fa-info-circle fa-2x me-3"></i>
-                        <div>
-                            Pastikan informasi yang Anda berikan akurat dan terkini. Perubahan akan mempengaruhi pengalaman Anda menggunakan platform kami.
+        <!-- Level 2: Executives -->
+        <div class="org-level level-connector">
+            <div class="connecting-line"></div>
+            <div class="org-level-title">
+                Executive Leadership
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="org-item">
+                        <div class="org-item-header">
+                            <div class="org-avatar">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7bc2f479-730e-4e03-bb67-813501b2e17e.png" alt="Portrait of a professional woman in business attire with dark hair and glasses, working on a laptop in a modern office" />
+                            </div>
+                            <div class="org-info">
+                                <h5>Sarah Johnson</h5>
+                                <p>Chief Financial Officer</p>
+                            </div>
+                        </div>
+                        <div class="org-details">
+                            <p><i class="bi bi-envelope"></i> s.johnson@company.com</p>
+                            <p><i class="bi bi-telephone"></i> +1 (555) 123-4568</p>
+                            <p><i class="bi bi-people"></i> Finance Department</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="org-item">
+                        <div class="org-item-header">
+                            <div class="org-avatar">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bdfbcd02-341c-4b72-8dc9-bb4922c6140c.png" alt="Portrait of a confident male executive with short hair and a gray suit, presenting to a boardroom" />
+                            </div>
+                            <div class="org-info">
+                                <h5>Michael Chen</h5>
+                                <p>Chief Technology Officer</p>
+                            </div>
+                        </div>
+                        <div class="org-details">
+                            <p><i class="bi bi-envelope"></i> m.chen@company.com</p>
+                            <p><i class="bi bi-telephone"></i> +1 (555) 123-4569</p>
+                            <p><i class="bi bi-code-square"></i> Technology Division</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="org-item">
+                        <div class="org-item-header">
+                            <div class="org-avatar">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8ffaa166-8224-474a-8c72-7b7549a73b2b.png" alt="Portrait of a smiling female executive with curly brown hair, standing in front of a glass-walled office" />
+                            </div>
+                            <div class="org-info">
+                                <h5>Lisa Rodriguez</h5>
+                                <p>Chief Marketing Officer</p>
+                            </div>
+                        </div>
+                        <div class="org-details">
+                            <p><i class="bi bi-envelope"></i> l.rodriguez@company.com</p>
+                            <p><i class="bi bi-telephone"></i> +1 (555) 123-4570</p>
+                            <p><i class="bi bi-megaphone"></i> Marketing Team</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 3: Department Heads -->
+        <div class="org-level level-connector">
+            <div class="connecting-line"></div>
+            <div class="org-level-title">
+                Department Heads
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="org-item">
+                        <div class="org-item-header">
+                            <div class="org-avatar">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3eaed5e4-4e12-4a5d-a8ec-414da80279d0.png" alt="Portrait of a serious-looking middle-aged man with a beard, wearing a business casual shirt" />
+                            </div>
+                            <div class="org-info">
+                                <h5>David Wilson</h5>
+                                <p>Finance Director</p>
+                            </div>
+                        </div>
+                        <div class="org-details">
+                            <p><i class="bi bi-envelope"></i> d.wilson@company.com</p>
+                            <p><i class="bi bi-telephone"></i> +1 (555) 123-4571</p>
+                            <p><i class="bi bi-cash-stack"></i> Accounting, Tax</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="org-item">
+                        <div class="org-item-header">
+                            <div class="org-avatar">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0513c52e-51bf-4e84-b212-9cdb55ed278d.png" alt="Portrait of a young female tech professional with short black hair, wearing smart casual attire in a tech lab" />
+                            </div>
+                            <div class="org-info">
+                                <h5>Emma Davis</h5>
+                                <p>Engineering Manager</p>
+                            </div>
+                        </div>
+                        <div class="org-details">
+                            <p><i class="bi bi-envelope"></i> e.davis@company.com</p>
+                            <p><i class="bi bi-telephone"></i> +1 (555) 123-4572</p>
+                            <p><i class="bi bi-terminal"></i> Software Development</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="org-item">
+                        <div class="org-item-header">
+                            <div class="org-avatar">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ddd2b767-2b62-4821-bc4b-70b5ee72f97c.png" alt="Portrait of an enthusiastic young professional with a laptop, sitting at a colorful workspace" />
+                            </div>
+                            <div class="org-info">
+                                <h5>Robert Brown</h5>
+                                <p>Product Manager</p>
+                            </div>
+                        </div>
+                        <div class="org-details">
+                            <p><i class="bi bi-envelope"></i> r.brown@company.com</p>
+                            <p><i class="bi bi-telephone"></i> +1 (555) 123-4573</p>
+                            <p><i class="bi bi-kanban"></i> Product Development</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="org-item">
+                        <div class="org-item-header">
+                            <div class="org-avatar">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bbe1c23e-1bf8-4ccd-882d-e183c58244eb.png" alt="Portrait of a stylish woman with red hair and a bright smile, holding a tablet in a marketing office" />
+                            </div>
+                            <div class="org-info">
+                                <h5>Olivia Martin</h5>
+                                <p>Digital Marketing Manager</p>
+                            </div>
+                        </div>
+                        <div class="org-details">
+                            <p><i class="bi bi-envelope"></i> o.martin@company.com</p>
+                            <p><i class="bi bi-telephone"></i> +1 (555) 123-4574</p>
+                            <p><i class="bi bi-globe"></i> Digital Marketing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 4: Teams -->
+        <div class="org-level level-connector">
+            <div class="connecting-line"></div>
+            <div class="org-level-title">
+                Team Leads
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="org-item">
+                        <div class="org-item-header">
+                            <div class="org-avatar">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9e31815c-c87e-4536-b7dd-eaafab600f60.png" alt="Portrait of a technical lead demonstrating software to colleagues in a meeting room" />
+                            </div>
+                            <div class="org-info">
+                                <h5>Thomas Lee</h5>
+                                <p>Frontend Team Lead</p>
+                            </div>
+                        </div>
+                        <div class="org-details">
+                            <p><i class="bi bi-envelope"></i> t.lee@company.com</p>
+                            <p><i class="bi bi-telephone"></i> +1 (555) 123-4575</p>
+                            <p><i class="bi bi-laptop"></i> 8 Team Members</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="org-item">
+                        <div class="org-item-header">
+                            <div class="org-avatar">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b7f115b5-fd4b-43c2-8a53-a3a1b5e4f8e5.png" alt="Portrait of a services engineer in a casual hoodie, working on a server rack" />
+                            </div>
+                            <div class="org-info">
+                                <h5>Jennifer Park</h5>
+                                <p>Backend Team Lead</p>
+                            </div>
+                        </div>
+                        <div class="org-details">
+                            <p><i class="bi bi-envelope"></i> j.park@company.com</p>
+                            <p><i class="bi bi-telephone"></i> +1 (555) 123-4576</p>
+                            <p><i class="bi bi-server"></i> 10 Team Members</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="org-item">
+                        <div class="org-item-header">
+                            <div class="org-avatar">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4cab7571-fe52-44fa-99f1-7071bf1889a6.png" alt="Portrait of a creative director with colorful hair in an artsy studio environment" />
+                            </div>
+                            <div class="org-info">
+                                <h5>Mark Taylor</h5>
+                                <p>Design Team Lead</p>
+                            </div>
+                        </div>
+                        <div class="org-details">
+                            <p><i class="bi bi-envelope"></i> m.taylor@company.com</p>
+                            <p><i class="bi bi-telephone"></i> +1 (555) 123-4577</p>
+                            <p><i class="bi bi-palette"></i> 5 Team Members</p>
                         </div>
                     </div>
                 </div>
@@ -204,55 +395,40 @@
     </div>
 
     <!-- Bootstrap 5 JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Fungsi untuk mengganti foto profil
-        document.getElementById('changePhotoBtn').addEventListener('click', function() {
-            document.getElementById('photoUpload').click();
-        });
+        // Add animation when elements come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const orgItems = document.querySelectorAll('.org-item');
 
-        document.getElementById('photoUpload').addEventListener('change', function(e) {
-            if (e.target.files && e.target.files[0]) {
-                const reader = new FileReader();
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
 
-                reader.onload = function(event) {
-                    document.getElementById('profilePicture').src = event.target.result;
-                }
+            orgItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'all 0.5s ease';
+                observer.observe(item);
+            });
 
-                reader.readAsDataURL(e.target.files[0]);
-            }
-        });
-
-        // Validasi formulir
-        document.querySelectorAll('form').forEach(form => {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                // Validasi bisa ditambahkan di sini
-
-                // Contoh notifikasi
-                const toastHtml = `
-                    <div class="toast show align-items-center text-white bg-success border-0 position-fixed bottom-0 end-0 m-3" role="alert" aria-live="assertive" aria-atomic="true">
-                        <div class="d-flex">
-                            <div class="toast-body">
-                                <i class="fas fa-check-circle me-2"></i>
-                                Perubahan berhasil disimpan!
-                            </div>
-                            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-                        </div>
-                    </div>
-                `;
-
-                const toastContainer = document.createElement('div');
-                toastContainer.innerHTML = toastHtml;
-                document.body.appendChild(toastContainer);
-
-                // Hilangkan toast setelah 3 detik
-                setTimeout(() => {
-                    toastContainer.querySelector('.toast').classList.remove('show');
-                    setTimeout(() => toastContainer.remove(), 150);
-                }, 3000);
+            // Add hover effect to connecting lines
+            const connectingLines = document.querySelectorAll('.connecting-line');
+            connectingLines.forEach(line => {
+                line.addEventListener('mouseover', () => {
+                    line.style.width = '4px';
+                });
+                line.addEventListener('mouseout', () => {
+                    line.style.width = '2px';
+                });
             });
         });
     </script>
 </body>
 </html>
+

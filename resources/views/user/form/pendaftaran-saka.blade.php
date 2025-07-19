@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pendaftaran Saka</title>
+    <link rel="icon" type="image/png" href="{{ asset('dashboard/assets/img/logo_saka.png') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .step {
@@ -60,10 +61,10 @@
 </head>
 
 <body class="bg-gray-50 min-h-screen flex items-center justify-center p-4">
-    <div class="w-full max-w-2xl bg-white rounded-lg shadow-lg overflow-hidden">
+    <div class="w-full max-w-7xl bg-white rounded-lg shadow-lg overflow-hidden">
         <!-- Header -->
         <div class="bg-blue-600 text-white p-6">
-            <h1 class="text-2xl font-bold text-center">PENDAFTARAN SAKA</h1>
+            <h1 class="text-2xl font-bold text-center">PENDAFTARAN ANGGOTA BARU SAKA BHAYANGKARA POLSEK MAYONG</h1>
             <div class="flex justify-between items-center mt-6 px-4">
                 <div class="text-center flex flex-col items-center">
                     <div class="step-indicator active" id="step1-indicator">1</div>
@@ -145,7 +146,9 @@
                         class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         required placeholder="contoh@email.com">
                 </div>
-                <div class="flex justify-end">
+                <div class="flex justify-between">
+                    <a type="button"
+                        class="btn prev-btn bg-gray-300 text-gray-700 px-6 py-2 rounded-md hover:bg-gray-400 transition" href="{{ route('beranda')}}">Kembali</a>
                     <button type="button"
                         class="next-btn bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition">Lanjut</button>
                 </div>

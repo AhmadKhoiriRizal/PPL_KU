@@ -14,23 +14,30 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('beranda') ? 'active' : '' }}" href="{{ route('beranda') }}">Beranda</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('sejarah') ? 'active' : '' }}" href="{{ route('sejarah') }}">Sejarah</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('galeri') ? 'active' : '' }}" href="{{ route('galeri') }}">Galeri</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('pendaftaran') ? 'active' : '' }}" href="{{ route('pendaftaran') }}">Pendaftaran</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('kontak') ? 'active' : '' }}" href="{{ route('kontak') }}">Kontak</a>
-                </li>
-                {{-- <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('kontak') ? 'active' : '' }}" href="{{ route('kontak') }}">Kontak</a>
-                </li> --}}
+                <a class="nav-link nav-link-custom {{ request()->routeIs('beranda') ? 'active' : '' }}" href="{{ route('beranda') }}">Beranda</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-link-custom {{ request()->routeIs('sejarah') ? 'active' : '' }}" href="{{ route('sejarah') }}">Sejarah</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-link-custom {{ request()->routeIs('galeri') ? 'active' : '' }}" href="{{ route('galeri') }}">Galeri</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-link-custom {{ request()->routeIs('pendaftaran') ? 'active' : '' }}" href="{{ route('pendaftaran') }}">Pendaftaran</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-link-custom {{ request()->routeIs('organisasi') ? 'active' : '' }}" href="{{ route('organisasi') }}">Organisasi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-link-custom {{ request()->routeIs('kontak') ? 'active' : '' }}" href="{{ route('kontak') }}">Kontak</a>
+            </li>
+            @auth
+                @if (auth()->user()->role === 'user')
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom {{ request()->routeIs('pendaftaran.form') ? 'active' : '' }}" href="{{ route('pendaftaran.form') }}">Formulir</a>
+                    </li>
+                @endif
+            @endauth
             </ul>
             <div class="ms-auto w-auto">
                 <div class="header-social d-flex align-items-center gap-2">
@@ -51,7 +58,7 @@
                             </div>
 
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                                {{-- <li><a class="dropdown-item" href="{{ route('profile') }}">Profil</a></li> --}}
+                                <li><a class="dropdown-item" href="{{ route('user.profil') }}">Profil</a></li>
                                 <li>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

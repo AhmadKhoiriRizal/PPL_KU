@@ -312,6 +312,22 @@
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function showLoginAlert() {
+            Swal.fire({
+                icon: 'info',
+                title: 'Sudah Login',
+                text: 'Silakan isi formulir pendaftaran.',
+                confirmButtonText: 'Isi Formulir'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "{{ route('pendaftaran.form') }}";
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>

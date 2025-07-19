@@ -53,4 +53,11 @@ class AnggotaController extends Controller
 
         return redirect()->route('admin.anggota')->with('success', 'Data berhasil dihapus.');
     }
+
+    // Struktur Organisasi
+    public function organisasi()
+    {
+        $anggota = AnggotaSaka::all(); // lebih disarankan pakai model daripada DB::table
+        return view('user.organisasi', compact('anggota'));
+    }
 }

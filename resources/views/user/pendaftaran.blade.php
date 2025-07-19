@@ -25,10 +25,11 @@
                                 orang tua/wali dan pembina gugus depan.<br>
                                 Silakan melakukan pendaftaran melalui tombol di bawah ini:
                             </p>
-                            <a href="{{ route('login') }}"
-                                class="btn btn-primary mt-2">
-                                Daftar Anggota
-                            </a>
+                            @auth
+                                <a href="#" onclick="event.preventDefault(); showLoginAlert();" class="btn btn-primary mt-2">Daftar Anggota</a>
+                            @else
+                                <a href="{{ route('login') }}" class="btn btn-primary mt-2">Daftar Anggota</a>
+                            @endauth
                         </div>
                     </div>
                 </li>

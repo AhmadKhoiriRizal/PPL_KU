@@ -33,6 +33,8 @@ foreach ($pages as $page) {
 // galeri
 Route::get('/galeri', [KegiatanController::class, 'index'])->name('galeri');
 
+// organisasi
+Route::get('/organisasi', [AnggotaController::class, 'organisasi'])->name('organisasi');
 
 // Form login/register
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login')->middleware('guest');
@@ -50,6 +52,11 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/pendaftaran-saka', [PendaftaranController::class, 'Index'])->name('pendaftaran.form');
     Route::post('/pendaftaran-saka', [PendaftaranController::class, 'store'])->name('pendaftaran.store');
     Route::get('pendaftaran-saka/success/{id}', [PendaftaranController::class, 'success'])->name('pendaftaran.success');
+
+    // profil user
+    Route::get('/profil', [PendaftaranController::class, 'profil'])->name('user.profil');
+    Route::put('/profile/update', [PendaftaranController::class, 'updateProfile'])->name('user.updateProfile');
+    Route::put('/profile/update-password', [PendaftaranController::class, 'updatePassword'])->name('user.updatePassword');
 });
 
 // Admin
@@ -82,6 +89,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/admin/manajemen-akun/store', [ManajementAkunController::class, 'store'])->name('admin.addUser');
     Route::put('/admin/manajemen-akun/{id}/update', [ManajementAkunController::class, 'update'])->name('admin.updateUser');
     Route::delete('/admin/manajemen-akun/{id}/delete', [ManajementAkunController::class, 'destroy'])->name('admin.deleteUser');
+
     // Profil Admin
     Route::put('/admin/profile/update', [ManajementAkunController::class, 'updateProfile'])->name('admin.updateProfile');
     Route::put('/admin/profile/update-password', [ManajementAkunController::class, 'updatePassword'])->name('admin.updatePassword');

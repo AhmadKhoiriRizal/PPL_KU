@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 
 use App\Models\AnggotaSaka;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 class PendaftaranController extends Controller
 {
@@ -145,6 +148,53 @@ class PendaftaranController extends Controller
         $anggota->delete();
 
         return redirect()->route('admin.datapendaftar')->with('success', 'Data berhasil dihapus.');
+    }
+
+    // Profil User
+    public function profil()
+    {
+        $user = Auth::user();
+        return view('user.profil', compact('user'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|max:100|unique:users,email,' . Auth::id(),
+            'status' => ['required', Rule::in(['aktif', 'nonaktif'])],
+        ]);
+
+        $user = Auth::user();
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'status' => $request->status,
+        ]);
+
+        return redirect()->route('user.profil')->with('success', 'Profil berhasil diperbarui.');
+    }
+
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => ['required', 'confirmed', 'min:8']
+        ]);
+
+        $user = Auth::user();
+
+        if (!Hash::check($request->current_password, $user->password)) {
+            return redirect()->route('user.profil')->withErrors(['current_password' => 'Password saat ini tidak sesuai.']);
+        }
+
+        $user->password = Hash::make($request->new_password);
+        // $user->two_factor_enabled = $request->has('two_factor');
+        $user->save();
+
+        return redirect()->route('user.profil')->with('success', 'Password berhasil diperbarui.');
     }
 
 }
