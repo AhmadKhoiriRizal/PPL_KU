@@ -72,14 +72,14 @@
                     <p class="text-muted">Pramuka Kamtibmas sendiri memiliki sembilan krida, yaitu Krida Lalu Lintas, Krida
                         SAR, Krida Pemadam Kebakaran, Krida Tindakan Pertama pada Kejadian Perkara, Krida Pengawal, Krida
                         Komlek, Krida Pelacak, dan Krida Pengamat.</p>
-                    <p><a class="btn" href="#">Info Lebih lanjut <i class="fas fa-angle-right"></i></a></p>
+                    <p><a class="btn" href="{{ route('sejarah')}}">Info Lebih lanjut <i class="fas fa-angle-right"></i></a></p>
                 </div>
                 <div class="col-md-4">
-                    <img class="logo_tentang_saka" src="{{ asset('dashboard/assets/img/logo_saka.png')}}">
+                    <img class="logo_tentang_saka" src="{{ asset('dashboard/assets/img/logo_saka.png') }}">
                 </div>
                 <div class="col-md-4">
                     <img class="logo_tentang_saka"
-                        src="{{ asset('dashboard/assets/img/gallery/4Krida-SakaBhayangkara.png')}}">
+                        src="{{ asset('dashboard/assets/img/gallery/4Krida-SakaBhayangkara.png') }}">
                 </div>
             </div>
         </div>
@@ -109,7 +109,8 @@
                                 Silakan melakukan pendaftaran melalui tombol di bawah ini:
                             </p>
                             @auth
-                                <a href="#" onclick="event.preventDefault(); showLoginAlert();" class="btn btn-primary mt-2">Daftar Anggota</a>
+                                <a href="#" onclick="event.preventDefault(); showLoginAlert();"
+                                    class="btn btn-primary mt-2">Daftar Anggota</a>
                             @else
                                 <a href="{{ route('login') }}" class="btn btn-primary mt-2">Daftar Anggota</a>
                             @endauth
@@ -120,8 +121,8 @@
                 <!-- 2. Pengisian Formulir Pendaftaran -->
                 <li class="timeline-inverted">
                     <div class="timeline-image">
-                        <img class="rounded-circle img-fluid" src="{{ asset('dashboard/assets/img/about/pendaftaran.png') }}"
-                            alt="Formulir" />
+                        <img class="rounded-circle img-fluid"
+                            src="{{ asset('dashboard/assets/img/about/pendaftaran.png') }}" alt="Formulir" />
                     </div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
@@ -134,8 +135,8 @@
                                 fotokopi identitas bila diperlukan.<br>
                                 Silakan unduh berkas formulir dan surat izin melalui tombol di bawah ini:
                             </p>
-                            <a href="{{ asset('dashboard/files/Surat Izin Orang Tua.docx') }}"
-                                class="btn btn-primary mt-2" target="_blank">
+                            <a href="{{ asset('dashboard/files/Surat Izin Orang Tua.docx') }}" class="btn btn-primary mt-2"
+                                target="_blank">
                                 Download Berkas
                             </a>
                         </div>
@@ -188,7 +189,8 @@
                             <h4>5. Kegiatan Rutin</h4>
                         </div>
                         <div class="timeline-body">
-                            <p class="text-muted">Anggota aktif mengikuti latihan rutin mingguan, kegiatan sosial atau bakti
+                            <p class="text-muted">Anggota aktif mengikuti latihan rutin mingguan, kegiatan sosial atau
+                                bakti
                                 masyarakat, serta event antar‑Saka sesuai bidang krida yang dipilih.</p>
                         </div>
                     </div>
@@ -211,7 +213,7 @@
             <!-- To make this form functional, sign up at-->
             <!-- https://startbootstrap.com/solution/contact-forms-->
             <!-- to get an API token!-->
-            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+            <form id="contactForm" onsubmit="sendToWhatsApp(event)">
                 <div class="row align-items-stretch mb-5">
                     <div class="col-md-6">
                         <div class="form-group responsive-map-container">
@@ -222,56 +224,25 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <!-- Name input-->
                             <input class="form-control" id="name" type="text" placeholder="Nama Anda *"
-                                data-sb-validations="required" />
-                            <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                                required />
                         </div>
                         <div class="form-group">
-                            <!-- Email address input-->
                             <input class="form-control" id="email" type="email" placeholder="Email Anda *"
-                                data-sb-validations="required,email" />
-                            <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                            <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                                required />
                         </div>
                         <div class="form-group">
-                            <!-- Phone number input-->
-                            <input class="form-control" id="phone" type="tel" placeholder="Nomer Handphone Anda *"
-                                data-sb-validations="required" />
-                            <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.
-                            </div>
+                            <input class="form-control" id="phone" type="tel"
+                                placeholder="Nomer Handphone Anda *" required />
                         </div>
                         <div class="form-group form-group-textarea mb-md-0">
-                            <!-- Message input-->
-                            <textarea class="form-control" id="message" placeholder="Pesan Anda *"
-                                data-sb-validations="required"></textarea>
-                            <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                            <textarea class="form-control" id="message" placeholder="Pesan Anda *" required></textarea>
                         </div>
                     </div>
                 </div>
-                <!-- Submit success message-->
-                <!---->
-                <!-- This is what your users will see when the form-->
-                <!-- has successfully submitted-->
-                <div class="d-none" id="submitSuccessMessage">
-                    <div class="text-center text-white mb-3">
-                        <div class="fw-bolder">Form submission successful!</div>
-                        To activate this form, sign up at
-                        <br />
-                        <a
-                            href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                    </div>
+                <div class="text-center">
+                    <button class="btn btn-primary btn-xl text-uppercase" type="submit">Kirim via WhatsApp</button>
                 </div>
-                <!-- Submit error message-->
-                <!---->
-                <!-- This is what your users will see when there is-->
-                <!-- an error submitting the form-->
-                <div class="d-none" id="submitErrorMessage">
-                    <div class="text-center text-danger mb-3">Terjadi Error Saat Mengirim Pesan!</div>
-                </div>
-                <!-- Submit Button-->
-                <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton"
-                        type="submit">Kirim Pesan</button></div>
             </form>
         </div>
     </section>

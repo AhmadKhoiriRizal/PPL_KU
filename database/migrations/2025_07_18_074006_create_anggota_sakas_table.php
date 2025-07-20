@@ -32,7 +32,7 @@ return new class extends Migration {
 
             // Kolom tambahan
             $table->string('jabatan')->nullable(); // Misal: Ketua, Sekretaris, dll.
-            $table->enum('status', ['aktif', 'nonaktif'])->default('aktif'); // Status keanggotaan
+            $table->enum('status', ['aktif', 'nonaktif'])->default('nonaktif'); // Status keanggotaan
             $table->date('masa_jabatan_mulai')->nullable();
             $table->date('masa_jabatan_selesai')->nullable();
             $table->timestamps();

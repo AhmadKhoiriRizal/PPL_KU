@@ -21,15 +21,13 @@
             <!-- To make this form functional, sign up at-->
             <!-- https://startbootstrap.com/solution/contact-forms-->
             <!-- to get an API token!-->
-            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+            <form id="contactForm" onsubmit="sendToWhatsApp(event)">
                 <div class="row align-items-stretch mb-5">
                     <div class="col-md-6">
                         <div class="responsive-map-container form-control">
-
                             <div class="form-group text-center pt-3">
                                 <h3>Kontak</h3>
                             </div>
-
                             <!-- Location -->
                             <div class="form-group d-flex align-items-start gap-3 m-3">
                                 <i class="bi bi-geo-alt-fill text-warning fs-2 mt-1"></i>
@@ -38,7 +36,6 @@
                                     <p>Polsek Mayong, Jl. Raya Mayong, Mayong, Jepara, Central Java, Indonesia</p>
                                 </div>
                             </div>
-
                             <!-- Email -->
                             <div class="form-group d-flex align-items-start gap-3 m-3">
                                 <i class="bi bi-envelope-fill text-warning fs-2 mt-1"></i>
@@ -47,7 +44,6 @@
                                     <p>sabharapolsekmayong@gmail.com</p>
                                 </div>
                             </div>
-
                             <!-- Call -->
                             <div class="form-group d-flex align-items-start gap-3 m-3">
                                 <i class="bi bi-telephone-fill text-warning fs-2 mt-1"></i>
@@ -57,60 +53,32 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
+
+                    <!-- Form Inputs -->
                     <div class="col-md-6">
                         <div class="form-group">
-                            <!-- Name input-->
-                            <input class="form-control" id="name" type="text" placeholder="Nama Anda *"
-                                data-sb-validations="required" />
-                            <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                            <input class="form-control" id="name" type="text" placeholder="Nama Anda *" required />
                         </div>
                         <div class="form-group">
-                            <!-- Email address input-->
-                            <input class="form-control" id="email" type="email" placeholder="Email Anda *"
-                                data-sb-validations="required,email" />
-                            <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                            <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                            <input class="form-control" id="email" type="email" placeholder="Email Anda *" required />
                         </div>
                         <div class="form-group">
-                            <!-- Phone number input-->
                             <input class="form-control" id="phone" type="tel" placeholder="Nomer Handphone Anda *"
-                                data-sb-validations="required" />
-                            <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.
-                            </div>
+                                required />
                         </div>
                         <div class="form-group form-group-textarea mb-md-0">
-                            <!-- Message input-->
-                            <textarea class="form-control" id="message" placeholder="Pesan Anda *"
-                                data-sb-validations="required"></textarea>
-                            <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                            <textarea class="form-control" id="message" placeholder="Pesan Anda *" required></textarea>
                         </div>
                     </div>
                 </div>
-                <!-- Submit success message-->
-                <!---->
-                <!-- This is what your users will see when the form-->
-                <!-- has successfully submitted-->
-                <div class="d-none" id="submitSuccessMessage">
-                    <div class="text-center text-white mb-3">
-                        <div class="fw-bolder">Form submission successful!</div>
-                        To activate this form, sign up at
-                        <br />
-                        <a
-                            href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                    </div>
+
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button class="btn btn-primary btn-xl text-uppercase" type="submit">
+                        Kirim via WhatsApp
+                    </button>
                 </div>
-                <!-- Submit error message-->
-                <!---->
-                <!-- This is what your users will see when there is-->
-                <!-- an error submitting the form-->
-                <div class="d-none" id="submitErrorMessage">
-                    <div class="text-center text-danger mb-3">Terjadi Error Saat Mengirim Pesan!</div>
-                </div>
-                <!-- Submit Button-->
-                <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton"
-                        type="submit">Kirim Pesan</button></div>
             </form>
         </div>
     </section>

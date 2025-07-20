@@ -327,6 +327,28 @@
                 }
             });
         }
+
+        // Pengiriman pesan no Whatsapp
+        function sendToWhatsApp(event) {
+            event.preventDefault(); // cegah form submit default
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            if (!name || !email || !phone || !message) {
+                alert("Mohon lengkapi semua kolom!");
+                return;
+            }
+
+            const waNumber = "628988933524"; // Ganti 0 dengan 62 (kode negara Indonesia)
+            const text = `Halo! Saya ingin menghubungi Anda.\n\nNama: ${name}\nEmail: ${email}\nNo HP: ${phone}\nPesan: ${message}`;
+            const encodedText = encodeURIComponent(text);
+
+            const waUrl = `https://wa.me/${waNumber}?text=${encodedText}`;
+            window.open(waUrl, "_blank");
+        }
     </script>
 </body>
 
