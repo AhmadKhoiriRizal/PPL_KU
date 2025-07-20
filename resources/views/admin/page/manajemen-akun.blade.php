@@ -9,8 +9,8 @@
                     <h4 class="card-title ">Manajemen Data Akun</h4>
                 </div>
                 <div class="">
-                    <a href="#" class=" text-center btn btn-outline-primary btn-icon mt-lg-0 mt-md-0 mt-3" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop-1">
+                    <a href="#" class=" text-center btn btn-outline-primary btn-icon mt-lg-0 mt-md-0 mt-3"
+                        data-bs-toggle="modal" data-bs-target="#staticBackdrop-1">
                         <i class="btn-inner">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -34,39 +34,40 @@
                                         <div class="form-group">
                                             <input type="text" name="name"
                                                 class="form-control mb-2 @error('name') is-invalid @enderror"
-                                                placeholder="Nama Lengkap" value="{{ old('name') }}">
+                                                placeholder="Nama Lengkap" value="{{ old('name') }}" required>
                                             @error('name')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
 
                                             <input type="email" name="email"
                                                 class="form-control mb-2 @error('email') is-invalid @enderror"
-                                                placeholder="Email" value="{{ old('email') }}">
+                                                placeholder="Email" value="{{ old('email') }}" required>
                                             @error('email')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
 
                                             <input type="password" name="password"
                                                 class="form-control mb-2 @error('password') is-invalid @enderror"
-                                                placeholder="Password">
+                                                placeholder="Password" required>
                                             @error('password')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
 
                                             <input type="password" name="password_confirmation"
                                                 class="form-control mb-2 @error('password_confirmation') is-invalid @enderror"
-                                                placeholder="Konfirmasi Password">
+                                                placeholder="Konfirmasi Password" required>
                                             @error('password_confirmation')
-                                                <div class="invalid-feedback">{{ $message }}
-                                                </div>
+                                                <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
 
                                             <select name="role" class="form-control mb-2" required>
+                                                <option value="" disabled selected>Pilih Role</option>
                                                 <option value="admin">Admin</option>
                                                 <option value="user">User</option>
                                             </select>
 
                                             <select name="status" class="form-control mb-2" required>
+                                                <option value="" disabled selected>Pilih Status</option>
                                                 <option value="aktif">Aktif</option>
                                                 <option value="nonaktif">Nonaktif</option>
                                             </select>
@@ -77,7 +78,6 @@
                                                 data-bs-dismiss="modal">Cancel</button>
                                         </div>
                                     </form>
-
                                 </div>
                             </div>
                         </div>
@@ -89,12 +89,15 @@
                     {{-- notifikasi error dan sukses --}}
                     @if (session('success') || session('error'))
                         <div class="position-fixed top-0 end-0 p-3" style="z-index: 1055">
-                            <div id="session-toast" class="toast align-items-center text-white {{ session('success') ? 'bg-success' : 'bg-danger' }} border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div id="session-toast"
+                                class="toast align-items-center text-white {{ session('success') ? 'bg-success' : 'bg-danger' }} border-0"
+                                role="alert" aria-live="assertive" aria-atomic="true">
                                 <div class="d-flex">
                                     <div class="toast-body">
                                         {{ session('success') ?? session('error') }}
                                     </div>
-                                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                                    <button type="button" class="btn-close btn-close-white me-2 m-auto"
+                                        data-bs-dismiss="toast" aria-label="Close"></button>
                                 </div>
                             </div>
                         </div>
@@ -197,7 +200,8 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <p>Yakin ingin menghapus akun
-                                                                <strong>{{ $user->name }}</strong>?</p>
+                                                                <strong>{{ $user->name }}</strong>?
+                                                            </p>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="submit" class="btn btn-danger">Hapus</button>
@@ -209,7 +213,6 @@
                                             </div>
                                         </div>
                                     @else
-
                                     @endif
 
                                 </td>

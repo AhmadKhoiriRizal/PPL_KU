@@ -35,7 +35,8 @@
 
                                         <div class="form-group mb-2">
                                             <input type="text" class="form-control @error('author') is-invalid @enderror"
-                                                name="author" value="{{ old('author') }}" placeholder="Penulis Kegiatan">
+                                                name="author" value="{{ old('author') }}" placeholder="Penulis Kegiatan"
+                                                required>
                                             @error('author')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -43,16 +44,16 @@
 
                                         <div class="form-group mb-2">
                                             <input type="text" class="form-control @error('judul') is-invalid @enderror"
-                                                name="judul" value="{{ old('judul') }}" placeholder="Judul Kegiatan">
+                                                name="judul" value="{{ old('judul') }}" placeholder="Judul Kegiatan"
+                                                required>
                                             @error('judul')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
 
                                         <div class="form-group mb-2">
-                                            <textarea class="form-control @error('deskripsi') is-invalid @enderror"
-                                                name="deskripsi" rows="3"
-                                                placeholder="Deskripsi Kegiatan">{{ old('deskripsi') }}</textarea>
+                                            <textarea class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi" rows="3"
+                                                placeholder="Deskripsi Kegiatan" required>{{ old('deskripsi') }}</textarea>
                                             @error('deskripsi')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -60,7 +61,7 @@
 
                                         <div class="form-group mb-2">
                                             <input type="file" class="form-control @error('foto') is-invalid @enderror"
-                                                name="foto">
+                                                name="foto" required>
                                             @error('foto')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -68,24 +69,26 @@
 
                                         <div class="form-group mb-2">
                                             <input type="text" class="form-control @error('lokasi') is-invalid @enderror"
-                                                name="lokasi" value="{{ old('lokasi') }}" placeholder="Lokasi Kegiatan">
+                                                name="lokasi" value="{{ old('lokasi') }}" placeholder="Lokasi Kegiatan"
+                                                required>
                                             @error('lokasi')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
 
                                         <div class="form-group mb-2">
-                                            <input type="text" class="form-control @error('kategori') is-invalid @enderror"
-                                                name="kategori" value="{{ old('kategori') }}"
-                                                placeholder="Kategori (misal: Pelatihan, Sosialisasi)">
+                                            <input type="text"
+                                                class="form-control @error('kategori') is-invalid @enderror" name="kategori"
+                                                value="{{ old('kategori') }}" placeholder="Kategori" required>
                                             @error('kategori')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
 
                                         <div class="form-group mb-2">
-                                            <input type="date" class="form-control @error('tanggal') is-invalid @enderror"
-                                                name="tanggal" value="{{ old('tanggal') }}">
+                                            <input type="date"
+                                                class="form-control @error('tanggal') is-invalid @enderror" name="tanggal"
+                                                value="{{ old('tanggal') }}" required>
                                             @error('tanggal')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -119,13 +122,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($kegiatans as $item)
+                        @foreach ($kegiatans as $item)
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td>
-                                    @if($item->foto)
-                                        <img src="{{ asset('storage/' . $item->foto) }}" alt="Foto" width="60" height="60"
-                                            style="object-fit: cover;">
+                                    @if ($item->foto)
+                                        <img src="{{ asset('storage/' . $item->foto) }}" alt="Foto" width="60"
+                                            height="60" style="object-fit: cover;">
                                     @else
                                         <span class="text-muted">Tidak Ada</span>
                                     @endif
@@ -162,20 +165,20 @@
                                                             value="{{ $item->author }}" placeholder="Author" required>
                                                         <input type="text" name="judul" class="form-control mb-2"
                                                             value="{{ $item->judul }}" placeholder="Judul" required>
-                                                        <textarea name="deskripsi" class="form-control mb-2" rows="3"
-                                                            placeholder="Deskripsi">{{ $item->deskripsi }}</textarea>
+                                                        <textarea name="deskripsi" class="form-control mb-2" rows="3" placeholder="Deskripsi">{{ $item->deskripsi }}</textarea>
                                                         <input type="text" name="lokasi" class="form-control mb-2"
                                                             value="{{ $item->lokasi }}" placeholder="Lokasi" required>
 
                                                         <input type="text" name="kategori" class="form-control mb-2"
-                                                        value="{{ $item->kategori }}" placeholder="Kategori" required>
+                                                            value="{{ $item->kategori }}" placeholder="Kategori"
+                                                            required>
 
                                                         <input type="date" name="tanggal" class="form-control mb-2"
                                                             value="{{ $item->tanggal }}" required>
 
                                                         <label for="foto">Foto Kegiatan (optional)</label>
                                                         <input type="file" name="foto" class="form-control mb-2">
-                                                        @if($item->foto)
+                                                        @if ($item->foto)
                                                             <small class="text-muted">Foto saat ini: <a
                                                                     href="{{ asset('storage/' . $item->foto) }}"
                                                                     target="_blank">Lihat</a></small>
@@ -216,16 +219,17 @@
                                                     <p><strong>Tanggal:</strong>
                                                         {{ \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') }}</p>
                                                     <p><strong>Foto:</strong><br>
-                                                        @if($item->foto)
-                                                            <img src="{{ asset('storage/' . $item->foto) }}" alt="Foto" width="200"
-                                                                class="img-thumbnail">
+                                                        @if ($item->foto)
+                                                            <img src="{{ asset('storage/' . $item->foto) }}"
+                                                                alt="Foto" width="200" class="img-thumbnail">
                                                         @else
                                                             Tidak ada foto.
                                                         @endif
                                                     </p>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                                    <button class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Tutup</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -283,4 +287,4 @@
                 </table>
             </div>
         </div>
-@endsection
+    @endsection
