@@ -49,8 +49,8 @@
                                             <select class="form-select" id="role" name="role">
                                                 <option value="admin" {{ $user->role === 'admin' ? 'selected' : '' }}>admin
                                                 </option>
-                                                <option value="user" {{ $user->role === 'user' ? 'selected' : '' }}>user
-                                                </option>
+                                                {{-- <option value="user" {{ $user->role === 'user' ? 'selected' : '' }}>user
+                                                </option> --}}
                                             </select>
                                         </div>
 
