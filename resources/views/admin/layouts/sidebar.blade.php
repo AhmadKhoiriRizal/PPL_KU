@@ -60,7 +60,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.manajemen-akun')}}">
                     <i class="bi bi-shield-lock"></i>
-                    <span class="menu-title">Manajement Akun</span>
+                    <span class="menu-title">Manajemen Akun</span>
                 </a>
             </li>
             <li class="nav-item">

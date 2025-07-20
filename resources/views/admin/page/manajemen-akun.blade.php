@@ -6,7 +6,7 @@
         <div class="content-wrapper">
             <div class="d-flex justify-content-between flex-wrap">
                 <div class="header-title">
-                    <h4 class="card-title ">Manajement Data Akun</h4>
+                    <h4 class="card-title ">Manajemen Data Akun</h4>
                 </div>
                 <div class="">
                     <a href="#" class=" text-center btn btn-outline-primary btn-icon mt-lg-0 mt-md-0 mt-3" data-bs-toggle="modal"

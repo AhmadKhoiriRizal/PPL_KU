@@ -6,7 +6,7 @@
         <div class="content-wrapper">
             <div class="d-flex justify-content-between flex-wrap">
                 <div class="header-title">
-                    <h4 class="card-title ">Data anggota</h4>
+                    <h4 class="card-title ">Data Anggota</h4>
                 </div>
             </div>
             <div class="table-responsive">

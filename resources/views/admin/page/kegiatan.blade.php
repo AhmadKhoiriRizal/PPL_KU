@@ -6,7 +6,7 @@
         <div class="content-wrapper">
             <div class="d-flex justify-content-between flex-wrap">
                 <div class="header-title">
-                    <h4 class="card-title ">Data Akun Management</h4>
+                    <h4 class="card-title ">Manajemen Data Kegiatan</h4>
                 </div>
                 <div class="">
                     <a href="#" class=" text-center btn btn-outline-primary btn-icon mt-lg-0 mt-md-0 mt-3"
