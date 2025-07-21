@@ -47,6 +47,9 @@ Route::post('/register', [AuthController::class, 'register']);
 // Logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+// kontak
+Route::post('/send-email', [ManajementAkunController::class, 'sendEmail'])->name('contact.send');
+
 // User
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/pendaftaran-saka', [PendaftaranController::class, 'Index'])->name('pendaftaran.form');

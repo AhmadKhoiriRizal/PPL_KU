@@ -29,10 +29,8 @@ class PendaftaranController extends Controller
             'no_hp' => 'required|string|max:15',
             'email' => 'required|email',
 
-            // data sekolah
-            'sekolah' => 'required|string|max:255',
-
             // data orang tua
+            'sekolah' => 'required|string|max:255',
             'nama_ortu' => 'required|string|max:255',
             'pekerjaan_ortu' => 'required|string|max:255',
 

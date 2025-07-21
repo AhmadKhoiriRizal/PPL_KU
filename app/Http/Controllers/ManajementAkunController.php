@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules\Password;
 
 class ManajementAkunController extends Controller
@@ -111,4 +112,28 @@ class ManajementAkunController extends Controller
 
         return back()->with('success', 'Password berhasil diperbarui.');
     }
+
+    // kontak kami
+    public function sendEmail(Request $request)
+{
+    $data = $request->validate([
+        'name' => 'required|string',
+        'email' => 'required|email',
+        'phone' => 'required|string',
+        'message' => 'required|string',
+    ]);
+
+    Mail::raw("
+        Nama: {$data['name']}\n
+        Email: {$data['email']}\n
+        Telepon: {$data['phone']}\n\n
+        Pesan:\n{$data['message']}
+    ", function ($message) use ($data) {
+        $message->to('sabharamayong@gmail.com')
+                ->subject('Pesan dari Form Kontak Website');
+    });
+
+    return back()->with('success', 'Pesan berhasil dikirim!');
+}
+
 }
